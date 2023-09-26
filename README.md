@@ -1,4 +1,4 @@
-# iraca
-This one is a minimal framework for making a server oriented by clean architecture.
+# Logger
+This one is a good logger for javascript.
 
 ![Texto alternativo](./docs/brand/icon.jpg)
