@@ -35,6 +35,7 @@ export const DEFAULT_LOGGER_CONFIG: Required<LoggerConfig> = {
 };
 
 export class Logger {
+  [string: string]: any;
   normalizedPath: string;
   stream: WriteStream;
   private isGroupActive = false;
@@ -70,10 +71,12 @@ export class Logger {
       this.configuration = DEFAULT_LOGGER_CONFIG;
     }
 
+    this.defineMethods();
     this.normalizedPath = normalize(this.path);
     if (existsSync(this.normalizedPath)) {
       rmSync(this.normalizedPath);
     }
+
     this.stream = createWriteStream(this.normalizedPath, {
       flags: 'a',
       encoding: 'utf8',
@@ -81,6 +84,13 @@ export class Logger {
     });
   }
 
+  defineMethods() {
+    for (const level of this.configuration.levels) {
+      (this as any)[level] = (data: any) => {
+        this.log(level, data);
+      };
+    }
+  }
   log(level: string, data: any) {
     const date = new Date();
 

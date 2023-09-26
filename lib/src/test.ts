@@ -18,4 +18,5 @@ l.log('debug', 'La vida es muy bonita como para no vivirla 1.');
 l.group('GeTeamsUsecase');
 l.log('debug', 'La vida es muy bonita como para no vivirla 2.');
 l.log('debug', 'La vida es muy bonita como para no vivirla 3.');
+(l).vegeta('La vida es muy bonita como para no vivirla 3.');
 l.close();
